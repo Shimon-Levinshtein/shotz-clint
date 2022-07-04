@@ -22,8 +22,8 @@ const HomePage = props => {
         date: new Date(),
         timeZoneId: '',
         // locationName?: string,
-        latitude: 32.0852999,
-        longitude: 34.7817676,
+        latitude: 32.0790721,
+        longitude: 34.8513687,
         // elevation?: number = 0,
         complexZmanim: true,
     }
@@ -38,6 +38,41 @@ const HomePage = props => {
             <div className={styles.xxx}>
                 {dayHe}
             </div >
+            <div className={styles.list_of_zmanim}>
+                <div className={styles.list_item}>
+                    עלות השחר: {moment(new Date(basicZmanim.AlosHashachar)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                    זריחה: {moment(new Date(basicZmanim.Sunrise)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                    סוף זמן שמע מג"א: {moment(new Date(basicZmanim.SofZmanShmaMGA)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                    סוף זמן שמע גר"א/בעל התניא: {moment(new Date(basicZmanim.SofZmanShmaGRA)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                    סוף זמן תפילה מג"א: {moment(new Date(basicZmanim.SofZmanTfilaMGA)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                    סוף זמן תפלה בעל התניא /גר"א: {moment(new Date(basicZmanim.SofZmanTfilaGRA)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                   ססס: {moment(new Date(basicZmanim.BainHasmashosYereim2Point8Degrees)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                   ססס: {moment(new Date(basicZmanim.BainHasmashosYereim18Minutes)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                   ססס: {moment(new Date(basicZmanim.BainHasmashosYereim16Point875Minutes)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                   ססס: {moment(new Date(basicZmanim.BainHasmashosYereim2Point1Degrees)).format(' HH:MM ')}
+                </div >
+                <div className={styles.list_item}>
+                   ססס: {moment(new Date(basicZmanim.BainHasmashosYereim13Point5Minutes)).format(' HH:MM ')}
+                </div >
+            </div >
             <div className={styles.xxx}>
                 {Object.keys(basicZmanim).map(key => (
                     <>
@@ -47,11 +82,6 @@ const HomePage = props => {
                         }
                     </>
                 ))}
-            </div >
-            <div className={styles.list_of_zmanim}>
-                <div className={styles.xxx}>
-                    עלות השחר: {moment(new Date(basicZmanim.AlosHashachar)).format(' HH:MM ')}
-                </div >
             </div >
             <div className={styles.xxx}>
                 {dayHe}
