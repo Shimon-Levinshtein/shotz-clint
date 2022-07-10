@@ -1,23 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./Map.module.scss";
 import { connect } from 'react-redux';
-// import Hebcal from 'hebcal';
-import {
-    Calendar,
-    Daf,
-    getZmanimJson,
-    HebrewDateFormatter,
-    JewishCalendar,
-    JewishDate,
-    Options,
-    YerushalmiYomiCalculator,
-    YomiCalculator,
-    Zman,
-    Parsha,
-} from 'kosher-zmanim';
-import * as KosherZmanim from "kosher-zmanim";
-import moment from 'moment';
-import SpinnerOnly from '../../templates/SpinnerOnly/SpinnerOnly';
+import ButtonClose from '../../templates/ButtonClose/ButtonClose';
+
 
 
 const Map = props => {
@@ -36,8 +21,11 @@ const Map = props => {
   
     return (
         <div className={styles.continer}>
-            {/* <iframe src={`https://maps.google.com/maps?q=${latitude}, ${longitude}&z=15&output=embed`} width="360" height="270" frameborder="0" ></iframe> */}
+        <div className={styles.box}>
+            <ButtonClose close={props.setOpenMap}/>
+            <iframe src={`https://maps.google.com/maps?q=${latitude}, ${longitude}&z=15&output=embed`}></iframe>
             {/* <iframe src={`https://maps.google.com/maps?q=32.0780324, 34.8420265&z=15&output=embed`} width="360" height="270" frameborder="0" ></iframe> */}
+        </div >
         </div >
     );
 };

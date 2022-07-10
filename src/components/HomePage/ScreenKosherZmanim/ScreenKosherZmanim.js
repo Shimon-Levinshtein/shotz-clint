@@ -65,53 +65,112 @@ const ScreenKosherZmanim = props => {
 
     const zmanim = KosherZmanim.getZmanimJson(options);
     const basicZmanim = zmanim.Zmanim;
-    // const basicZmanim = {};
-    // console.log('zmanim');
-    console.log(basicZmanim);
     return (
         <div className={styles.continer}>
-            <iframe src={`https://maps.google.com/maps?q=${latitude}, ${longitude}&z=15&output=embed`} width="360" height="270" frameborder="0" ></iframe>
             {!thereIsLocation ? <SpinnerOnly /> :
                 <div className={styles.list_of_zmanim}>
                     <div className={styles.list_item}>
-                        עלות השחר: {moment(new Date(basicZmanim.AlosHashachar)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.AlosHashachar)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            עלות השחר:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        זריחה: {moment(new Date(basicZmanim.Sunrise)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.Sunrise)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            זריחה:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        סוף זמן שמע מג"א: {moment(new Date(basicZmanim.SofZmanShmaMGA)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.SofZmanShmaMGA)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            סוף זמן שמע מג"א:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        סוף זמן שמע גר"א/בעל התניא: {moment(new Date(basicZmanim.SofZmanShmaGRA)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.SofZmanShmaGRA)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            סוף זמן שמע גר"א/בעל התניא:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        סוף זמן תפילה מג"א: {moment(new Date(basicZmanim.SofZmanTfilaMGA)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.SofZmanTfilaMGA)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            סוף זמן תפילה מג"א:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        סוף זמן תפלה בעל התניא /גר"א: {moment(new Date(basicZmanim.SofZmanTfilaGRA)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.SofZmanTfilaGRA)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            סוף זמן תפלה בעל התניא /גר"א:
+                        </div>
                     </div >
                     <div className={styles.list_item}>
-                        בין השמשות (18 דקות): {moment(new Date(basicZmanim.BainHasmashosYereim18Minutes)).format(' HH:mm:ss ')}
-                    </div >
-                    <div className={styles.list_item}>
-                        שקיעת החמה: {moment(new Date(basicZmanim.Sunset)).format(' HH:mm:ss ')}
-                    </div >
-                    <div className={styles.list_item}>
-                        צאת הכוכבים גאונים (4 נקודות 7 מעלות): {moment(new Date(basicZmanim.TzaisGeonim4Point37Degrees)).format(' HH:mm:ss ')}
-                    </div >
-                    <div className={styles.list_item}>
-                        צאת הכוכבים בעל התניא: {moment(new Date(basicZmanim.TzaisBaalHatanya)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.BainHasmashosYereim18Minutes)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            בין השמשות (18 דקות):
+                        </div>
                     </div >
                     {jewishCalendar.getDayOfWeek() == 6 && <div className={styles.list_item}>
-                        הדלקת נרות: {moment(new Date(basicZmanim.CandleLighting)).format(' HH:mm:ss ')}
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.CandleLighting)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            הדלקת נרות:
+                        </div>
                     </div >}
+                    <div className={styles.list_item}>
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.Sunset)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            שקיעת החמה:
+                        </div>
+                    </div >
+                    <div className={styles.list_item}>
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.TzaisGeonim4Point37Degrees)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            צאת הכוכבים גאונים (4 נקודות 7 מעלות):
+                        </div>
+                    </div >
+                    <div className={styles.list_item}>
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.TzaisBaalHatanya)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            צאת הכוכבים בעל התניא:
+                        </div>
+                    </div >
+                    <div className={styles.list_item}>
+                        <div className={styles.item_time}>
+                            {moment(new Date(basicZmanim.Tzais72)).format(' HH:mm:ss ')}
+                        </div>
+                        <div dir='auto' className={styles.item_text}>
+                            צאת הכוכבים ר"ת (72):
+                        </div>
+                    </div >
                 </div >
             }
             <div className={styles.xxx}>
                 {/* {dayHe} */}
             </div >
-            <div className={styles.xxx}>
+            {/* <div className={styles.xxx}>
                 {Object.keys(basicZmanim).map(key => (
                     <>
                         {moment(new Date(basicZmanim[key])).format() !== 'Invalid date' && <div className={styles.xxx}>
@@ -120,7 +179,7 @@ const ScreenKosherZmanim = props => {
                         }
                     </>
                 ))}
-            </div >
+            </div > */}
 
         </div >
     );
@@ -128,22 +187,6 @@ const ScreenKosherZmanim = props => {
 
 
 
-
-// TzaisGeonim3Point65Degrees: 8:05:31 pm
-// TzaisGeonim3Point676Degrees: 8:05:39 pm
-// TzaisGeonim3Point7Degrees: 8:05:47 pm
-// TzaisGeonim3Point8Degrees: 8:06:20 pm
-// TzaisGeonim4Point37Degrees: 8:09:26 pm
-// TzaisGeonim4Point61Degrees: 8:10:44 pm
-// TzaisGeonim4Point8Degrees: 8:11:47 pm
-// TzaisGeonim5Point88Degrees: 8:17:43 pm
-// TzaisGeonim5Point95Degrees: 8:18:06 pm
-// TzaisGeonim6Point45Degrees: 8:20:52 pm
-// TzaisGeonim7Point083Degrees: 8:24:24 pm
-// TzaisGeonim7Point67Degrees: 8:27:41 pm
-// TzaisGeonim8Point5Degrees: 8:32:21 pm
-// TzaisGeonim9Point3Degrees: 8:36:54 pm
-// TzaisGeonim9Point75Degrees: 8:39:28 pm
 
 const mapStateToProps = state => {
     return {}
