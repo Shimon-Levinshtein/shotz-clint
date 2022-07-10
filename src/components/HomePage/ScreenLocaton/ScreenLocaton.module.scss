@@ -1,0 +1,27 @@
+.continer {
+  .button {
+    background-color: rgb(0, 162, 255);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid rgb(0, 162, 255);
+    min-width: 140px;
+    width: 300px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 162, 255);
+    }
+    .list_locations {
+        position: absolute;
+      .list_locations_item {
+      }
+    }
+  }
+}

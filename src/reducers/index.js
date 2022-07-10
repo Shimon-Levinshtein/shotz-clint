@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-// import allCalculatorDatabase from './allCalculatorDatabase';
+import location from './location';
 
 
 export default combineReducers({
-    // allCalculatorDatabase: allCalculatorDatabase,
-   
+    location: location,
 });
