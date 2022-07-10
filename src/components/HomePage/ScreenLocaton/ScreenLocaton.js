@@ -5,6 +5,7 @@ import Map from '../Map/Map';
 import { ImLocation } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { listLocations } from './listLocations';
+import { changeLocation } from '../../../actions/locationHeandler';
 
 
 
@@ -18,11 +19,29 @@ const ScreenLocaton = props => {
 
     // ];
 
+    const onSelectLocation = data => {
+        props.changeLocation(data);
+        setopenListLocations(false)
+    };
+    const selectMyLocation = data => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            props.changeLocation({
+                locationName: 'מיקום שלי',
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+            });
+        });
+        setopenListLocations(false)
+    };
+
     const divListLocations = () => {
         if (openListLocations) {
             return (<div className={styles.list_locations}>
+                <div onClick={() => selectMyLocation()} className={styles.list_locations_item}>
+                    מצא את המיקום שלי
+                </div >
                 {listLocations.map((item, index) => (
-                    <div key={index} className={styles.list_locations_item}>
+                    <div onClick={() => onSelectLocation(item)} key={index} className={styles.list_locations_item}>
                         {item.locationName}
                     </div >
                 ))}
@@ -39,7 +58,7 @@ const ScreenLocaton = props => {
                 <ImLocation />
                 הצג מיקום נוכחי במפה
             </div >
-            <div dir='auto' onClick={() => setopenListLocations(!openListLocations)} className={styles.button}>
+            <div dir='auto' onMouseLeave={() => setopenListLocations(false)} onClick={() => setopenListLocations(!openListLocations)} className={styles.button}>
                 בחר מיקום: {location.locationName} <IoIosArrowDown />
                 {divListLocations()}
             </div >
@@ -55,4 +74,4 @@ const mapStateToProps = state => {
         location: state.location,
     }
 }
-export default connect(mapStateToProps, {})(ScreenLocaton);
+export default connect(mapStateToProps, { changeLocation })(ScreenLocaton);

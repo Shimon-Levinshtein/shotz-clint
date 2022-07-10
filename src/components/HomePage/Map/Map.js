@@ -8,16 +8,7 @@ import ButtonClose from '../../templates/ButtonClose/ButtonClose';
 const Map = props => {
 
     const location = props.location;
-    const [latitude, setLatitude] = useState('32.085993');
-    const [longitude, setLongitude] = useState('34.8299585');
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-        });
-    }, []);
-
+    
 
     return (
         <div className={styles.continer}>

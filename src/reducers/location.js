@@ -1,3 +1,4 @@
+import { CHANGE_LOCATION } from "../actions/locationHeandler";
 
 const defaultState = {
     locationName: 'בני ברק',
@@ -7,12 +8,8 @@ const defaultState = {
 
 const variable = (state = defaultState, action) => {
     switch (action.type) {
-        // case CHANGE_QR_CODE:
-        //     const newState = { ...state };
-        //     newState.requestQrCode = false;
-        //     newState.qrCode = action.payload;
-        //     return newState;
-
+        case CHANGE_LOCATION:
+            return action.payload;
         default:
             return state;
 

@@ -35,28 +35,12 @@ const ScreenKosherZmanim = props => {
     // console.log('dayHe//////////');
     // console.log(year.getDay(hDate));
 
-    const [thereIsLocation, setThereIsLocation] = useState(false);
-    const [latitude, setLatitude] = useState('32.085993');
-    const [longitude, setLongitude] = useState('34.8299585');
-
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-            setThereIsLocation(true);
-            // year.setLocation(position.coords.latitude, position.coords.longitude);
-        });
-    }, []);
+    const location = props.location;
+    
     const options = {
-        // date: new Date(),
         date: '2022-07-07T12:04:15.088Z',
-        // timeZoneId: '',
-        // locationName?: string,
-        latitude: latitude,
-        longitude: longitude,
-        // elevation?: number = 0,
+        latitude: location.latitude,
+        longitude: location.longitude,
         complexZmanim: true,
         timeZoneId: "Asia/Jerusalem",
         locationName: "Asia/Jerusalem",
@@ -67,7 +51,7 @@ const ScreenKosherZmanim = props => {
     const basicZmanim = zmanim.Zmanim;
     return (
         <div className={styles.continer}>
-            {!thereIsLocation ? <SpinnerOnly /> :
+            {/* <SpinnerOnly />  */}
                 <div className={styles.list_of_zmanim}>
                     <div className={styles.list_item}>
                         <div className={styles.item_time}>
@@ -166,7 +150,7 @@ const ScreenKosherZmanim = props => {
                         </div>
                     </div >
                 </div >
-            }
+            
             <div className={styles.xxx}>
                 {/* {dayHe} */}
             </div >
@@ -189,6 +173,8 @@ const ScreenKosherZmanim = props => {
 
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        location: state.location,
+    }
 }
 export default connect(mapStateToProps, {})(ScreenKosherZmanim);

@@ -15,12 +15,22 @@
     cursor: pointer;
     position: relative;
     &:hover {
-      background-color: rgb(255, 255, 255);
-      color: rgb(0, 162, 255);
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 162, 255);
     }
     .list_locations {
         position: absolute;
-      .list_locations_item {
+        top: 40px;
+        right: 0px;
+        width: 100%;
+        background-color: rgb(224, 224, 224);
+        .list_locations_item {
+            color: rgb(0, 162, 255);
+            padding: 8px;
+            &:hover {
+                background-color: rgb(0, 162, 255);
+                color: white;
+            }
       }
     }
   }
