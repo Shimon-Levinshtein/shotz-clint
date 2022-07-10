@@ -5,6 +5,7 @@ import ScreenKosherZmanim from './ScreenKosherZmanim/ScreenKosherZmanim';
 // import { IoLocationOutline } from "react-icons/io";
 // import { IconName } from "react-icons/io";
 import ScreenLocaton from './ScreenLocaton/ScreenLocaton';
+import ClockAnalog from './ScreenKosherZmanim/ClockAnalog/ClockAnalog';
 
 
 const HomePage = props => {
@@ -16,7 +17,8 @@ const HomePage = props => {
                     <ScreenKosherZmanim />
                 </div >
                 <div className={styles.top_left}>
-                   <ScreenLocaton />
+                    <ScreenLocaton />
+                    <ClockAnalog />
                 </div >
             </div >
         </div >

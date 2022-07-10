@@ -1,6 +1,10 @@
 .continer {
-    background-color: rgb(205, 241, 255);
-   .list_of_zmanim {
+    margin-top: 30px;
+    .date_information {
+        text-align: center;
+    }
+    .list_of_zmanim {
+       background-color: rgb(220, 243, 252);
        padding: 20px;
        .list_item {
            display: flex;
