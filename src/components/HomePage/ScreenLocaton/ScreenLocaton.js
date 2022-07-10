@@ -36,7 +36,7 @@ const ScreenLocaton = props => {
 
     const divListLocations = () => {
         if (openListLocations) {
-            return (<div className={styles.list_locations}>
+            return (<div onMouseLeave={() => setopenListLocations(false)} className={styles.list_locations}>
                 <div onClick={() => selectMyLocation()} className={styles.list_locations_item}>
                     מצא את המיקום שלי
                 </div >
@@ -58,7 +58,7 @@ const ScreenLocaton = props => {
                 <ImLocation />
                 הצג מיקום נוכחי במפה
             </div >
-            <div dir='auto' onMouseLeave={() => setopenListLocations(false)} onClick={() => setopenListLocations(!openListLocations)} className={styles.button}>
+            <div dir='auto' onClick={() => setopenListLocations(!openListLocations)} className={styles.button}>
                 בחר מיקום: {location.locationName} <IoIosArrowDown />
                 {divListLocations()}
             </div >

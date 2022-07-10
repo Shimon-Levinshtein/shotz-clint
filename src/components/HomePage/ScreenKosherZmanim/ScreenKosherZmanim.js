@@ -24,7 +24,7 @@ const ScreenKosherZmanim = props => {
 
     console.log(KosherZmanim);
     const myDate = props.myDate.date;
-    // myDate.setDate(myDate.getDate() + 2);`
+    // myDate.setDate(myDate.getDate() + 2);
     const location = props.location;
     const jewishCalendar = new JewishCalendar(myDate);
     // const jewishDate = new JewishDate(myDate);
