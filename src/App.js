@@ -1,14 +1,14 @@
 import styles from "./App.module.scss";
+import Header from "./components/Header/Header";
 
 import HomePage from './components/HomePage/HomePage';
 
 function App() {
+
   return (
     <div className={styles.continer}>
-
-      <div className={styles.besad}>
-        בס"ד
-      </div>
+<Header/>
+     
       <HomePage />
     </div>
   );

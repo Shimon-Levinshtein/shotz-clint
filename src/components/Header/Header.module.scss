@@ -1,0 +1,25 @@
+.continer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  width: 100vw;
+  background-color: #99daff;
+  overflow-x: hidden;
+  .menu {
+      margin: 20px;
+    svg {
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        &:hover {
+            color: rgb(0, 162, 255);
+        }
+    }
+  }
+  .besad {
+    font-size: 20px;
+    right: 20px;
+    top: 20px;
+  }
+}
