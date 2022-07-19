@@ -1,8 +1,58 @@
 .continer {
-  position: fixed;
-  height: 100vh;
-  background-color: gray;
-  width: 500px;
-  max-width: 90vw;
-  
+  width: 100%;
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .top {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+
+    .menu_button {
+      cursor: pointer;
+      margin-right: 10%;
+      margin-left: 10%;
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+      border-bottom: 1px solid rgb(211, 211, 211);
+      padding: 10px;
+      &:hover {
+        background-color: rgb(0, 162, 255);
+        color: white;
+      }
+    }
+    .menu_button_active {
+      color: rgb(0, 162, 255);
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    .user_status {
+      .button_login {
+        background-color: rgb(0, 162, 255);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        border: 1px solid rgb(0, 162, 255);
+        min-width: 140px;
+        width: 300px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: rgb(0, 162, 255);
+        }
+      }
+    }
+  }
 }
