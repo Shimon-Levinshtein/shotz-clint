@@ -14,7 +14,7 @@ const Header = props => {
             if (open) {
                 sideMenuRef.current.style.transform = 'translateX(0px)';
             } else {
-                sideMenuRef.current.style.transform = 'translateX(-100vw)';
+                sideMenuRef.current.style.transform = 'translateX(-140vw)';
             }
         }
     };

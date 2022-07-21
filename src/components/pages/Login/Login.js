@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../../firebase/firebase';
+import { closeScreen, openScreen } from '../../../actions/screenHandle';
 
 
 
@@ -12,8 +13,8 @@ const Login = props => {
 
     const navigate = useNavigate();
 
-
-
+    const userData = props.userData;
+    if (userData.isLogin) navigate('/');
     const [email, setEmail] = useState('');
     const [emailErr, setEmailErr] = useState('');
     const [password, setPassword] = useState('');
@@ -39,17 +40,26 @@ const Login = props => {
 
     const handleSudmit = () => {
         if (emailErr, passwordErr) return;
-        signInWithEmailAndPassword(auth, email, password)
-        .then(user => {
-            console.log('signInWithEmailAndPassword ...... ', user);
-            // setIsLoading(true);
-            // history.push('/');
-            // setIsLoading(true);
-        }).catch(error => {
-            console.log('error.message ...... ', error.message);
-            // setErrorMessage(error.message);
-            // errMessageService.showErrMessage(error.message);
+        props.openScreen({
+            screenName: 'spinner',
+            screenDataName: 'spinnerData',
+            screenData: '',
         });
+        signInWithEmailAndPassword(auth, email, password)
+            .then(user => {
+                console.log('signInWithEmailAndPassword ...... ', user);
+            }).catch(error => {
+                props.closeScreen({
+                    screenName: 'spinner',
+                    screenDataName: 'spinnerData',
+                });
+                props.openScreen({
+                    screenName: 'errorMessage',
+                    screenDataName: 'errorMessageData',
+                    screenData: {text: error.message},
+                });
+                console.log(error);
+            });
     };
     const emailChange = (e) => {
         setEmailErr('');
@@ -121,6 +131,8 @@ const Login = props => {
 
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        userData: state.user,
+    }
 }
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, { openScreen, closeScreen })(Login);

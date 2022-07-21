@@ -1,5 +1,20 @@
 .continer {
- 
+  display: flex;
+  width: 100vw;
+  .left {
+    width: 75vw;
+  }
+  .right {
+    width: 25vw;
+    padding: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .button {
+
+    }
+  }
 }
 @media only screen and (max-width: 600px) {
   .continer {

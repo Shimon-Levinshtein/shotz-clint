@@ -3,6 +3,7 @@ import styles from "./SideMenu.module.scss";
 import { connect } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/firebase';
+import { openScreen } from '../../actions/screenHandle';
 
 
 
@@ -24,6 +25,11 @@ const SideMenu = props => {
                 // setErrorMessage(error.message);
                 // errMessageService.showErrMessage(error.message);
             });
+        props.openScreen({
+            screenName: 'spinner',
+            screenDataName: 'spinnerData',
+            screenData: '',
+        });
     };
     return (
         <div className={styles.continer}>
@@ -35,17 +41,17 @@ const SideMenu = props => {
                 >
                     דף הבית
                 </NavLink>
-                <NavLink
+                {userData.isLogin && <NavLink
                     dir='auto'
                     to="/yahrzeit"
                     className={linkActive}
                 >
                     ניהול יארצייט
-                </NavLink>
+                </NavLink>}
             </div >
             <div className={styles.bottom}>
                 <div className={styles.user_status}>
-                    {"userData.isLogin" ?
+                    {userData.isLogin ?
                         <div onClick={() => logout()} className={styles.button_login}>
                             התנתק
                         </div > :
@@ -65,4 +71,4 @@ const mapStateToProps = state => {
         userData: state.user,
     }
 }
-export default connect(mapStateToProps, {})(SideMenu);
+export default connect(mapStateToProps, { openScreen })(SideMenu);
