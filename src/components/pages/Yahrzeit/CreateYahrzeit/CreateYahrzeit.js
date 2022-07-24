@@ -1,51 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from "./CreateYahrzeit.module.scss";
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { ReactJewishDatePicker, BasicJewishDay } from "react-jewish-datepicker";
-// import Hebcal from "hebcal";
+import HebCalPicker from './HebCalPicker/HebCalPicker';
 
 const CreateYahrzeit = props => {
-//     var gregyear = new Hebcal.GregYear();
-// console.log(gregyear);
-    const navigate = useNavigate();
 
-    const [basicJewishDay, setBasicJewishDay] = useState(null);
-    const [jewishYear, setJewishYear] = useState('3760');
-console.log(basicJewishDay);
-    useEffect(() => {
-        if (basicJewishDay) {
-            setJewishYear(basicJewishDay?.jewishDateStrHebrew.split(' ')[2])
-        }
-    }, [basicJewishDay]);
-    const userData = props.userData;
-    if (!userData.isLogin) navigate('/');
-    const basicJewishDate = {
-        day: 13,
-        monthName: "Elul",
-        year: jewishYear
-      };
-    //   console.log(basicJewishDate);
+    const [hebDate, setHebDate] = useState('');
+    const [hebDateFomat, setHebDateFomat] = useState('');
+    const [name, setName] = useState('');
     return (
         <div className={styles.continer}>
 
             <div className={styles.box}>
-            <div className={styles.input_box}>
-                <libel>בחירת תאריך</libel>
-                <ReactJewishDatePicker
-                    // value={new Date()}
-                    value={basicJewishDate}
-                    isHebrew
-                    // isRange={true}
-                    onClick={(day) => {
-                        setBasicJewishDay(day);
-                    }}
-                />
-            </div >
-            <div className={styles.input_box}>
-                <libel>בחירת תאריך</libel>
-                <input value={jewishYear} onChange={e => setJewishYear(e.target.value)}/>
-            </div >
+                <div dir='rtl' className={styles.name_box}>
+                    <label>שם הצדיק</label>
+                    <input value={name} onChange={e => setName(e.target.value)} />
+                </div >
+                <hr />
+                <div className={styles.date_box}>
+                    <HebCalPicker setHebDate={setHebDate} setHebDateFomat={setHebDateFomat} />
+                </div >
+                <hr />
+                <div dir='rtl' className={styles.name_box}>
+                    <label>הערות</label>
+                    <textarea value={name} onChange={e => setName(e.target.value)} />
+                </div >
+                <hr />
+                <div dir='rtl' className={styles.buttons_box}>
+                    <div onClick={() => {}} className={`${styles.button} regular-bottom`}>
+                        לשמור יארצייט
+                    </div >
+                </div >
             </div >
         </div >
 

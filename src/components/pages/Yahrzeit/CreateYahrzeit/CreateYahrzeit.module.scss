@@ -7,9 +7,34 @@
     margin-top: 20px;
     border-radius: 10px;
     padding: 30px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    .input_box {
-      
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    hr {
+      border-top: none;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    .name_box {
+      display: flex;
+      // align-items: flex-start;
+      label {
+        font-size: 15px;
+        color: gray;
+        font-weight: bold;
+      }
+      input, textarea {
+        font-size: 15px;
+        padding: 10px;
+        border: 0;
+        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
+        margin-right: 15px;
+        border-radius: 5px;
+        width: 400px;
+      }
+    }
+    .buttons_box {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
