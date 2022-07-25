@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import styles from "./CreateYahrzeit.module.scss";
 import { connect } from 'react-redux';
 import HebCalPicker from './HebCalPicker/HebCalPicker';
+import { createYahrzeit } from '../../../../actions/yahrzeit';
 
 const CreateYahrzeit = props => {
 
     const [hebDate, setHebDate] = useState('');
     const [hebDateFomat, setHebDateFomat] = useState('');
     const [name, setName] = useState('');
+    const [comments, setComments] = useState('');
+console.log(hebDate);
+    const saveYahrzeit = () => {
+        props.createYahrzeit({
+            name: name,
+            hebDate: hebDate,
+            hebDateFomat: hebDateFomat,
+            comments: comments,
+        })
+    };
     return (
         <div className={styles.continer}>
 
@@ -23,11 +34,11 @@ const CreateYahrzeit = props => {
                 <hr />
                 <div dir='rtl' className={styles.name_box}>
                     <label>הערות</label>
-                    <textarea value={name} onChange={e => setName(e.target.value)} />
+                    <textarea value={comments} onChange={e => setComments(e.target.value)} />
                 </div >
                 <hr />
                 <div dir='rtl' className={styles.buttons_box}>
-                    <div onClick={() => {}} className={`${styles.button} regular-bottom`}>
+                    <div onClick={() => saveYahrzeit()} className={`${styles.button} regular-bottom`}>
                         לשמור יארצייט
                     </div >
                 </div >
@@ -43,4 +54,4 @@ const mapStateToProps = state => {
         userData: state.user,
     }
 };
-export default connect(mapStateToProps, {})(CreateYahrzeit);
+export default connect(mapStateToProps, { createYahrzeit })(CreateYahrzeit);
