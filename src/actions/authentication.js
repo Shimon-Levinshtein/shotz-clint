@@ -12,3 +12,4 @@ export const logout = () => {
         dispatch({ type: LOGIN_OUT, payload: ''});
     }
 };
+
