@@ -3,6 +3,7 @@ import styles from "./Yahrzeit.module.scss";
 import { connect } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import CreateYahrzeit from './CreateYahrzeit/CreateYahrzeit';
+import ListYahrzeits from './ListYahrzeits/ListYahrzeits';
 
 
 const Yahrzeit = props => {
@@ -18,7 +19,7 @@ const Yahrzeit = props => {
           <Route exact path="/" element={
             <div className={styles.continer}>
             <div className={styles.left}>
-                list
+                <ListYahrzeits />
             </div >
             <div className={styles.right}>
                 <div onClick={() => navigate('/yahrzeit/creat-yahrzeit')} className={`${styles.button} regular-bottom`}>

@@ -1,7 +1,5 @@
 import { db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore"; 
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGIN_OUT = 'LOGIN_OUT';
 
 const gatId = () => {
     return new Date().getTime() + '';
