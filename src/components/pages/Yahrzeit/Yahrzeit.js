@@ -22,7 +22,7 @@ const Yahrzeit = props => {
                 <ListYahrzeits />
             </div >
             <div className={styles.right}>
-                <div onClick={() => navigate('/yahrzeit/creat-yahrzeit')} className={`${styles.button} regular-bottom`}>
+                <div onClick={() => navigate('/yahrzeit/creat-yahrzeit')} className={`${styles.button} blue-but`}>
                     להוסיף יארצייט
                 </div >
             </div >

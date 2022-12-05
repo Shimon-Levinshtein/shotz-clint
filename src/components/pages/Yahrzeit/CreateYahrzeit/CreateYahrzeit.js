@@ -3,26 +3,35 @@ import styles from "./CreateYahrzeit.module.scss";
 import { connect } from 'react-redux';
 import HebCalPicker from './HebCalPicker/HebCalPicker';
 import { createYahrzeit } from '../../../../actions/yahrzeit';
+import { BsArrowRight } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 const CreateYahrzeit = props => {
+
+    const navigate = useNavigate();
 
     const [hebDate, setHebDate] = useState('');
     const [hebDateFomat, setHebDateFomat] = useState('');
     const [name, setName] = useState('');
     const [comments, setComments] = useState('');
-console.log(hebDate);
+
+    console.log(hebDate);
+
     const saveYahrzeit = () => {
         props.createYahrzeit({
             name: name,
             hebDate: hebDate,
             hebDateFomat: hebDateFomat,
             comments: comments,
-        })
+        });
     };
     return (
         <div className={styles.continer}>
 
             <div className={styles.box}>
+                <div className={styles.back} onClick={() => navigate('/yahrzeit')}>
+                    <BsArrowRight />
+                </div >
                 <div dir='rtl' className={styles.name_box}>
                     <label>שם הצדיק</label>
                     <input value={name} onChange={e => setName(e.target.value)} />
@@ -38,7 +47,7 @@ console.log(hebDate);
                 </div >
                 <hr />
                 <div dir='rtl' className={styles.buttons_box}>
-                    <div onClick={() => saveYahrzeit()} className={`${styles.button} regular-bottom`}>
+                    <div onClick={() => saveYahrzeit()} className={`${styles.button} blue-but`}>
                         לשמור יארצייט
                     </div >
                 </div >

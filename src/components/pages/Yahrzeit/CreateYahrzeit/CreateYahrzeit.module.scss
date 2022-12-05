@@ -9,20 +9,43 @@
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      position: relative;
+      padding-top: 50px;
+
+    .back {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      svg {
+        font-size: 30px;
+        fill: gray;
+      }
+      &:hover {
+        svg {
+          fill: rgb(0, 162, 255);
+        }
+      }
+    }
+
     hr {
       border-top: none;
       margin-bottom: 20px;
       margin-top: 20px;
     }
+
     .name_box {
       display: flex;
+
       // align-items: flex-start;
       label {
         font-size: 15px;
         color: gray;
         font-weight: bold;
       }
-      input, textarea {
+
+      input,
+      textarea {
         font-size: 15px;
         padding: 10px;
         border: 0;
@@ -32,13 +55,14 @@
         width: 400px;
       }
     }
+
     .buttons_box {
       display: flex;
       justify-content: flex-end;
     }
   }
 }
+
 @media only screen and (max-width: 600px) {
-  .continer {
-  }
+  .continer {}
 }

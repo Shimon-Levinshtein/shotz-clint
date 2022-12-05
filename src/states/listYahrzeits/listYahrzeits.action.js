@@ -1,6 +1,7 @@
 import { db } from "../../firebase/firebase";
-
 import { collection, getDocs } from "firebase/firestore";
+
+export const GET_LIST_YAHRZEIT = 'GET_LIST_YAHRZEIT';
 
 // **************************************
 // https://firebase.google.com/docs/firestore/query-data/get-data
@@ -8,12 +9,13 @@ import { collection, getDocs } from "firebase/firestore";
 
 export const getAllYahrzeits = () => {
     return async (dispatch) => {
-        console.log('getAllYahrzeits');
         const querySnapshot = await getDocs(collection(db, "yahrzeit"));
+        const data = [];
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-          });
-        
-    }
+            const obj = doc.data();
+            obj.id = doc.id
+            data.push(obj);
+        });
+        dispatch({ type: GET_LIST_YAHRZEIT, payload: data});
+    };
 };
