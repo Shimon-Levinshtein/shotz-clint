@@ -1,3 +1,4 @@
+import { useAlert } from "react-alert";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import styles from "./App.module.scss";
@@ -11,6 +12,11 @@ import ErrorMessage from "./components/templates/ErrorMessage/ErrorMessage";
 import Spinner from "./components/templates/Spinner/Spinner";
 
 const App = props => {
+
+  const alert = useAlert();
+
+  if (!window.alert.show) window.alert = alert; 
+  
   return (
     <div className={styles.continer}>
       {props.screenHandle.spinner && <Spinner />}

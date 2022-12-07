@@ -10,19 +10,34 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 import Authentication from './authentication/Authentication';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-mui';
 
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.MIDDLE,
+  // timeout: 5000,
+  // offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE,
+  containerStyle: {
+    ZIndex: '9999',
+  }
+};
 const store = createStore(reducers, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <Authentication>
-          <App />
-        </Authentication>
-      </BrowserRouter>
-    </React.StrictMode>
+    <AlertProvider template={AlertTemplate} {...options}>
+      <React.StrictMode>
+        <BrowserRouter>
+          <Authentication>
+            <App />
+          </Authentication>
+        </BrowserRouter>
+      </React.StrictMode>
+    </AlertProvider>
   </Provider>
 );
 

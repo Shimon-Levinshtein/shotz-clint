@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styles from "./CreateYahrzeit.module.scss";
 import { connect } from 'react-redux';
 import HebCalPicker from './HebCalPicker/HebCalPicker';
-import { createYahrzeit } from '../../../../actions/yahrzeit';
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
+import { createYahrzeit } from '../../../../states/listYahrzeits/listYahrzeits.action';
 
 const CreateYahrzeit = props => {
 
@@ -15,15 +15,13 @@ const CreateYahrzeit = props => {
     const [name, setName] = useState('');
     const [comments, setComments] = useState('');
 
-    console.log(hebDate);
-
     const saveYahrzeit = () => {
         props.createYahrzeit({
             name: name,
             hebDate: hebDate,
             hebDateFomat: hebDateFomat,
             comments: comments,
-        });
+        }, navigate);
     };
     return (
         <div className={styles.continer}>

@@ -14,12 +14,16 @@ const variable = (state = defaultState, action) => {
         case OPEN_SCREEN:
             const newState = {...state};
             newState[action.payload.screenName] = true;
-            newState[action.payload.screenDataName] = action.payload.screenData;
+            if (action.payload.screenDataName) {
+                newState[action.payload.screenDataName] = action.payload.screenData;
+            };
             return newState;
-        case CLOSE_SCREEN:
-            const newStateB = {...state};
-            newStateB[action.payload.screenName] = false;
-            newStateB[action.payload.screenDataName] = defaultState[action.payload.screenDataName];
+            case CLOSE_SCREEN:
+                const newStateB = {...state};
+                newStateB[action.payload.screenName] = false;
+                if (action.payload.screenDataName) {
+                    newStateB[action.payload.screenDataName] = defaultState[action.payload.screenDataName];
+                };
             return newStateB;
         default:
             return state;
