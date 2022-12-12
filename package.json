@@ -12,7 +12,6 @@
     "kosher-zmanim": "^0.8.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
-    "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
     "react-alert-template-mui": "^1.0.7",
@@ -24,6 +23,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.56.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
