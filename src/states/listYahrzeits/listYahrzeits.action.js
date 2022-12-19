@@ -1,9 +1,10 @@
 import { db } from "../../firebase/firebase";
-import { doc, getDoc, setDoc, collection, getDocs, deleteDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, getDocs, deleteDoc, updateDoc } from "firebase/firestore";
 import { CLOSE_SCREEN, OPEN_SCREEN } from "../../actions/screenHandle";
 
 export const GET_LIST_YAHRZEIT = 'GET_LIST_YAHRZEIT';
 export const ADD_TO_LIST_YAHRZEIT = 'ADD_TO_LIST_YAHRZEIT';
+export const EDIT_TO_LIST_YAHRZEIT = 'EDIT_TO_LIST_YAHRZEIT';
 export const DELETE_FROM_LIST_YAHRZEIT = 'DELETE_FROM_LIST_YAHRZEIT';
 
 // **************************************
@@ -50,16 +51,39 @@ export const createYahrzeit = (data, navigate) => {
                 }
             })
         } else {
-            alert('לא הצליחה לשמור!')
-            console.log("No such document!");
+            alert.show("לא הצליחה לשמור!");
+        };
+        dispatch({ type: CLOSE_SCREEN, payload: { screenName: 'spinner' } });
+    };
+};
+
+export const editYahrzeit = (data, navigate) => {
+    return async (dispatch) => {
+        dispatch({ type: OPEN_SCREEN, payload: { screenName: 'spinner' } });
+        const id = data.id;
+        const docRef = doc(db, "yahrzeit", id);
+        await updateDoc(docRef, data, { merge: true });
+        const docYahrzeit = await getDoc(docRef);
+        if (docYahrzeit.exists()) {
+            dispatch({
+                type: EDIT_TO_LIST_YAHRZEIT, payload: {
+                    data: docYahrzeit.data(),
+                    id,
+                }
+            });
+            navigate('/yahrzeit', {
+                state: {
+                    idYahrzeit: id,
+                }
+            })
+        } else {
+            alert.show("לא הצליחה לשמור שינויים!");
         };
         dispatch({ type: CLOSE_SCREEN, payload: { screenName: 'spinner' } });
     };
 };
 
 export const deleteYahrzeitById = id => {
-    console.log('id...');
-    console.log(id);
     return async (dispatch) => {
         dispatch({ type: OPEN_SCREEN, payload: { screenName: 'spinner' } });
         const docRef = doc(db, "yahrzeit", id);

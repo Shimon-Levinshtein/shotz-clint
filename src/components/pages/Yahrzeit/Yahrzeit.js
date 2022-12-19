@@ -29,6 +29,7 @@ const Yahrzeit = props => {
         </div >
           } />
           <Route path="creat-yahrzeit/" element={<CreateYahrzeit />} />
+          <Route path="edit-yahrzeit/" element={<CreateYahrzeit />} />
         </Routes>
       </>
         

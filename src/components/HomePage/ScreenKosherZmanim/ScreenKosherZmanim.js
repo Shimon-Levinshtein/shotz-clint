@@ -22,29 +22,14 @@ import ClockAnalog from './ClockAnalog/ClockAnalog';
 
 const ScreenKosherZmanim = props => {
 
-    // console.log(KosherZmanim);
     const myDate = props.myDate.date;
-    // myDate.setDate(myDate.getDate() + 2);
     const location = props.location;
     const jewishCalendar = new JewishCalendar(myDate);
-    // const jewishDate = new JewishDate(myDate);
     const hebrewDateFormatter = new HebrewDateFormatter();
-    // console.log(HebrewDateFormatter.hebrewDaysOfWeek);
-    // console.log(jewishCalendar.getDayOfWeek());
 
     const hebcal = new Hebcal.HDate(myDate);
+    console.log(hebcal);
     hebcal.setLocation(+location.latitude, +location.longitude);
-    // console.log(hebcal.getSedra('h'));
-    useEffect(() => {
-        // console.log(hebcal.getSedra('h'));
-        // const year = new Hebcal();
-        // const hDate = new Hebcal.HDate();
-        // const dayHe = hDate.toString('h');
-        // const month = new Hebcal.Month(hDate.day, hDate.year);
-        // console.log('dayHe//////////');
-        // console.log(year.getDay(hDate));
-
-    }, [])
 
 
     const options = {
