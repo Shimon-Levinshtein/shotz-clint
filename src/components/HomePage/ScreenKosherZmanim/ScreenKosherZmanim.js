@@ -28,7 +28,6 @@ const ScreenKosherZmanim = props => {
     const hebrewDateFormatter = new HebrewDateFormatter();
 
     const hebcal = new Hebcal.HDate(myDate);
-    console.log(hebcal);
     hebcal.setLocation(+location.latitude, +location.longitude);
 
 

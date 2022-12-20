@@ -48,6 +48,13 @@ const SideMenu = props => {
                 >
                     ניהול יארצייט
                 </NavLink>}
+                {userData.isLogin && <NavLink
+                    dir='auto'
+                    to="/date-hendler"
+                    className={linkActive}
+                >
+                    ניהול זמן
+                </NavLink>}
             </div >
             <div className={styles.bottom}>
                 <div className={styles.user_status}>

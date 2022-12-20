@@ -1,0 +1,31 @@
+.continer {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  .box {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    position: relative;
+    padding-top: 50px;
+    .date_information {
+      text-align: center;
+      background-color: rgb(230, 230, 230);
+      padding: 20px;
+      border-radius: 10px;
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: gray;
+      }
+    }
+    .date_box {
+      margin-top: 30px;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .continer {
+  }
+}

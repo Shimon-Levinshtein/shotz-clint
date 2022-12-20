@@ -25,7 +25,7 @@ const HebCalPicker = props => {
     }, [props.yahrzeitId]);
 
     useEffect(() => {
-        props.setHebDate({ ...hebDate });
+        props.setHebDate(hebDate);
         props.setHebDateFomat(hebDate.toString('h'));
     }, [hebDate]);
 

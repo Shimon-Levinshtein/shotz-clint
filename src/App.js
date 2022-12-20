@@ -5,6 +5,7 @@ import styles from "./App.module.scss";
 import Header from "./components/Header/Header";
 
 import HomePage from './components/HomePage/HomePage';
+import DateHendler from "./components/pages/DateHendler/DateHendler";
 import Login from "./components/pages/Login/Login";
 import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Yahrzeit from "./components/pages/Yahrzeit/Yahrzeit";
@@ -27,6 +28,7 @@ const App = props => {
         <Route path="/yahrzeit/*" element={<Yahrzeit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/date-hendler" element={<DateHendler />} />
       </Routes>
     </div>
   );

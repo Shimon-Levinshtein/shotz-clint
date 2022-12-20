@@ -6,6 +6,7 @@ import ScreenKosherZmanim from './ScreenKosherZmanim/ScreenKosherZmanim';
 // import { IconName } from "react-icons/io";
 import ScreenLocaton from './ScreenLocaton/ScreenLocaton';
 import ClockAnalog from './ScreenKosherZmanim/ClockAnalog/ClockAnalog';
+import YahrzeitToDay from './YahrzeitToDay/YahrzeitToDay';
 
 
 const HomePage = props => {
@@ -20,6 +21,9 @@ const HomePage = props => {
                     <ScreenLocaton />
                     <ClockAnalog />
                 </div >
+            </div >
+            <div className={styles.midlle}>
+                <YahrzeitToDay />
             </div >
         </div >
 

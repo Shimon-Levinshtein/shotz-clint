@@ -1,0 +1,14 @@
+.continer {
+    width: fit-content;
+    margin-top: 15px;
+     .continer_input {
+         display: flex;
+         flex-direction: column;
+         label {
+             text-align: left;
+             width: 100%;
+             margin-bottom: 5px;
+         }
+     }
+ }
+ 

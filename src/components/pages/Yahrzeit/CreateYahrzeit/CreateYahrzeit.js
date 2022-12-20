@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from "./CreateYahrzeit.module.scss";
 import { connect } from 'react-redux';
-import HebCalPicker from './HebCalPicker/HebCalPicker';
+// import HebCalPicker from './HebCalPicker/HebCalPicker';
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { createYahrzeit, editYahrzeit } from '../../../../states/listYahrzeits/listYahrzeits.action';
 import { useEffect } from 'react';
+import HebCalPicker from '../../../templates/HebCalPicker/HebCalPicker';
 
 const CreateYahrzeit = props => {
 

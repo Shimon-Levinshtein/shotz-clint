@@ -59,6 +59,7 @@ const ListYahrzeits = props => {
                         className={styles.list_item_box}
                         ref={idYahrzeit === item.id ? vrapper : null}
                         style={idYahrzeit === item.id ? { backgroundColor: '#8cd5ff' } : {}}
+                        onClick={() => console.log(item)}
                     >
                         <div className={`${styles.but} blue-but`} onClick={() => editYahrzeit(item.id, item)}>
                             ערוך

@@ -1,4 +1,3 @@
-// import { CHANGE_LOCATION } from "../actions/locationHeandler";
 
 const defaultState = {
     date: new Date(),

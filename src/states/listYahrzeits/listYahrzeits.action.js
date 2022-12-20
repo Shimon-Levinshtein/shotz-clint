@@ -1,5 +1,5 @@
 import { db } from "../../firebase/firebase";
-import { doc, getDoc, setDoc, collection, getDocs, deleteDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, getDocs, deleteDoc, updateDoc, query, where } from "firebase/firestore";
 import { CLOSE_SCREEN, OPEN_SCREEN } from "../../actions/screenHandle";
 
 export const GET_LIST_YAHRZEIT = 'GET_LIST_YAHRZEIT';
@@ -7,10 +7,6 @@ export const ADD_TO_LIST_YAHRZEIT = 'ADD_TO_LIST_YAHRZEIT';
 export const EDIT_TO_LIST_YAHRZEIT = 'EDIT_TO_LIST_YAHRZEIT';
 export const DELETE_FROM_LIST_YAHRZEIT = 'DELETE_FROM_LIST_YAHRZEIT';
 
-// **************************************
-// https://firebase.google.com/docs/firestore/query-data/get-data
-// **************************************
-//  const q = query(collection(db, "cities"), where("state", "==", "CA"));
 
 export const getAllYahrzeits = () => {
     return async (dispatch) => {
@@ -24,6 +20,23 @@ export const getAllYahrzeits = () => {
         });
         dispatch({ type: CLOSE_SCREEN, payload: { screenName: 'spinner' } });
         dispatch({ type: GET_LIST_YAHRZEIT, payload: data });
+    };
+};
+
+export const getYahrzeitsByDate = ({ day, month }) => {
+    return async (dispatch) => {
+        console.log('getYahrzeitsByDate.....');
+
+        const docRef = collection(db, "yahrzeit");
+
+        const q = query(docRef, where("hebDate.day", "==", day), where("hebDate.month", "==", month));
+
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
     };
 };
 
