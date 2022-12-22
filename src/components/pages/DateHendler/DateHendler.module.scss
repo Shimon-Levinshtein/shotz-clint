@@ -9,6 +9,9 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     position: relative;
     padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .date_information {
       text-align: center;
       background-color: rgb(230, 230, 230);
@@ -21,6 +24,10 @@
       }
     }
     .date_box {
+      margin-top: 30px;
+    }
+    .but_continer {
+      width: 100%;
       margin-top: 30px;
     }
   }

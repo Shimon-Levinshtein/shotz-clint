@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./DateHendler.module.scss";
 import { connect } from 'react-redux';
 import Hebcal from "hebcal";
@@ -8,26 +8,65 @@ import {
 import moment from 'moment';
 import HebCalPicker from '../../templates/HebCalPicker/HebCalPicker';
 import GetTime from '../../templates/GetTime/GetTime';
+import { setTimeState } from '../../../states/date/data.action';
 
 const DateHendler = props => {
 
     const myDate = props.myDate.date;
     const location = props.location;
 
-    const [date, setDate] = useState(new Date());
-    const [hebDate, setHebDate] = useState('');
+    const [date, setDate] = useState(myDate);
+    const [hebDate, setHebDate] = useState(null);
     const [hebDateFomat, setHebDateFomat] = useState('');
-    const [value, onChange] = useState('10:00');
 
     const hebcal = new Hebcal.HDate(myDate);
     hebcal.setLocation(+location.latitude, +location.longitude);
 
+    console.log('****date*****');
+    console.log(date);
+    console.log(hebDate);
+    useEffect(() => {
+        if (myDate.getTime() !== date.getTime()) {
+            setDate(myDate);
+        };
+    }, [myDate]);
+
+    useEffect(() => {
+        if (hebDate) {
+            let strDate = hebDate.greg();
+            strDate = new Date(strDate);
+            if (strDate.getFullYear() !== date.getFullYear() && strDate.getFullYear() > 0) {
+                setDate(theDate => {
+                    theDate.setFullYear(strDate.getFullYear());
+                    return theDate;
+                });
+            };
+            if (strDate.getMonth() !== date.getMonth()) {
+                setDate(theDate => {
+                    theDate.setMonth(strDate.getMonth());
+                    return theDate;
+                });
+            };
+            if (strDate.getDate() !== date.getDate()) {
+                setDate(theDate => {
+                    theDate.setDate(strDate.getDate());
+                    return theDate;
+                });
+            };
+        };
+    }, [hebDate]);
+
+    const changeDate = gregDate => {
+        const newGregDate = new Date(gregDate);
+        console.log(newGregDate);
+        if (!newGregDate.getTime()) return;
+        if (newGregDate.getTime() !== date.getTime()) {
+            setDate(newGregDate);
+        };
+    };
+
     const setTime = () => {
-        console.log(hebDate);
-        console.log(hebDate.greg());
-        hebDate.getGregMonthObject(new Date());
-        console.log(hebDate.greg());
-        console.log(hebDate.holidays());
+        props.setTimeState(date);
     };
 
     return (
@@ -41,7 +80,7 @@ const DateHendler = props => {
                         יום {HebrewDateFormatter.hebrewDaysOfWeek[hebcal.getDay()]} {hebcal.toString('h')}
                     </div>
                     <div className={styles.date_information_text}>
-                        {moment(myDate).format('DD/MM/YYYY ')}
+                        {moment(myDate).format('DD/MM/YYYY HH:mm')}
                     </div>
                     <div className={styles.date_information_text}>
                         פרשת {hebcal.getSedra('h')}
@@ -53,9 +92,13 @@ const DateHendler = props => {
                         setHebDateFomat={setHebDateFomat}
                         editHebDate={null}
                         yahrzeitId={null}
+                        changeDate={date}
                     />
                 </div >
-                <GetTime value={date} setTime={setDate} />
+                <GetTime
+                    setTime={changeDate}
+                    changeDate={date}
+                />
                 <div className={styles.but_continer}>
                     <div onClick={() => setTime()} className={`${styles.button} blue-but`}>
                         החל תאריך
@@ -73,4 +116,4 @@ const mapStateToProps = state => {
         myDate: state.date,
     }
 }
-export default connect(mapStateToProps, {})(DateHendler);
+export default connect(mapStateToProps, { setTimeState })(DateHendler);

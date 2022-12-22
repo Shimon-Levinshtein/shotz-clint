@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./GetTime.module.scss";
 import { connect } from 'react-redux';
-// import TextField from '@mui/material/TextField';
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
-
-
-
-
-
 import AlarmIcon from '@mui/icons-material/Alarm';
 import SnoozeIcon from '@mui/icons-material/Snooze';
 import TextField from '@mui/material/TextField';
@@ -17,34 +8,35 @@ import ClockIcon from '@mui/icons-material/AccessTime';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import Stack from '@mui/material/Stack';
 
-const GetTime = ({ value, setTime }) => {
+const GetTime = ({ setTime, changeDate }) => {
 
-  const [dateWithInitialValue, setDateWithInitialValue] = useState(new Date());
+  const [date, setDate] = useState(changeDate ? changeDate : new Date());
 
-  const onChangeTime = (date) => {
-    const newTime = new Date(value);
-    newTime.setHours(date.getHours());
-    newTime.setMinutes(date.getMinutes());
-    newTime.setSeconds(0);
-    setTime(newTime);
-  };
+  useEffect(() => {
+    if (changeDate) {
+      setDate(changeDate);
+    };
+  }, [changeDate]);
+
+  useEffect(() => {
+    setTime(date);
+  }, [date]);
 
   return (
     <div className={styles.continer}>
       <div className={styles.continer_input}>
-        <label>Time</label>
+        <label>בחירת זמן</label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Stack spacing={3}>
+          <Stack >
             <DateTimePicker
               disableFuture
               hideTabs
               openTo="hours"
-              value={dateWithInitialValue}
+              value={date}
               onChange={(newValue) => {
-                setDateWithInitialValue(newValue);
+                setDate(newValue);
               }}
               // minDate={dayjs('2018-01-01')}
               components={{
@@ -58,35 +50,9 @@ const GetTime = ({ value, setTime }) => {
                 <TextField {...params} helperText="Hardcoded helper text" />
               )}
             />
-            <MobileDateTimePicker
-              value={dateWithInitialValue}
-              onChange={(newValue) => {
-                setDateWithInitialValue(newValue);
-              }}
-              label="With error handler"
-              onError={console.log}
-              // minDate={dayjs('2018-01-01T00:00')}
-              inputFormat="YYYY/MM/DD hh:mm a"
-              mask="____/__/__ __:__ _M"
-              renderInput={(params) => <TextField {...params} />}
-            />
-            {/* <DateTimePicker
-              value={dateWithNoInitialValue}
-              onChange={(newValue) => setDateWithNoInitialValue(newValue)}
-              renderInput={(params) => (
-                <TextField {...params} helperText="Clear Initial State" />
-              )}
-            /> */}
+
           </Stack>
         </LocalizationProvider>
-        {/* <LocalizationProvider dateAdapter={AdapterDateFns}> */}
-        {/* <StaticTimePicker
-            displayStaticWrapperAs="mobile"
-            value={value}
-            onChange={(newValue) => onChangeTime(newValue)}
-            renderInput={(params) => <TextField {...params} />}
-          /> */}
-        {/* </LocalizationProvider> */}
       </div>
     </div>
   );

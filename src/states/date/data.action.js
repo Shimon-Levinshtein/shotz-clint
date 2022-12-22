@@ -1,10 +1,7 @@
-// export const GET_LIST_YAHRZEIT = 'GET_LIST_YAHRZEIT';
+export const SET_TIME_STATE = 'SET_TIME_STATE';
 
-export const xxx = () => {
+export const setTimeState = date => {
     return async (dispatch) => {
-        // dispatch({ type: OPEN_SCREEN, payload: { screenName: 'spinner' } });
-        
-        // dispatch({ type: CLOSE_SCREEN, payload: { screenName: 'spinner' } });
-        // dispatch({ type: GET_LIST_YAHRZEIT, payload: data });
+        dispatch({ type: SET_TIME_STATE, payload: date });
     };
 };

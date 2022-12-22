@@ -14,7 +14,7 @@ const HebCalPicker = props => {
     const [yearInput, setYearInput] = useState('');
     const [yearList] = useState([...Array(6001).keys()]);
     const [daysList] = useState([...Array(31).keys()]);
-    const [hebDate, setHebDate] = useState(new Hebcal.HDate());
+    const [hebDate, setHebDate] = useState(props.changeDate ? new Hebcal.HDate(props.changeDate) : new Hebcal.HDate());
 
     useEffect(() => {
         if (props.yahrzeitId && props.editHebDate) {
@@ -23,6 +23,12 @@ const HebCalPicker = props => {
             if (props.editHebDate.day) setHebDate(cloneDeep(hebDate.setDate(props.editHebDate.day)));
         };
     }, [props.yahrzeitId]);
+
+    useEffect(() => {
+        if (props.changeDate) {
+            setHebDate(new Hebcal.HDate(props.changeDate));
+        };
+    }, [props.changeDate]);
 
     useEffect(() => {
         props.setHebDate(hebDate);
