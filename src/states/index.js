@@ -4,6 +4,7 @@ import date from './date/date.reducer';
 import user from './user';
 import screenHandle from './screenHandle';
 import listYahrzeits from './listYahrzeits/listYahrzeits.reducer';
+import todaysYahrzeits from './todaysYahrzeits/todaysYahrzeits.reducer';
 
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
     user,
     screenHandle,
     listYahrzeits,
+    todaysYahrzeits,
 });

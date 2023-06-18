@@ -23,29 +23,13 @@ export const getAllYahrzeits = () => {
     };
 };
 
-export const getYahrzeitsByDate = ({ day, month }) => {
-    return async (dispatch) => {
-        console.log('getYahrzeitsByDate.....');
-
-        const docRef = collection(db, "yahrzeit");
-
-        const q = query(docRef, where("hebDate.day", "==", day), where("hebDate.month", "==", month));
-
-        const querySnapshot = await getDocs(q);
-
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
-    };
-};
-
 const gatId = () => {
     return new Date().getTime() + '';
 };
 
 export const createYahrzeit = (data, navigate) => {
     return async (dispatch) => {
+        data.hebDate = { ...data.hebDate }
         dispatch({ type: OPEN_SCREEN, payload: { screenName: 'spinner' } });
         const id = gatId();
         await setDoc(doc(db, "yahrzeit", new Date().getTime() + ''), data, { merge: true });
@@ -72,6 +56,7 @@ export const createYahrzeit = (data, navigate) => {
 
 export const editYahrzeit = (data, navigate) => {
     return async (dispatch) => {
+        data.hebDate = { ...data.hebDate }
         dispatch({ type: OPEN_SCREEN, payload: { screenName: 'spinner' } });
         const id = data.id;
         const docRef = doc(db, "yahrzeit", id);
