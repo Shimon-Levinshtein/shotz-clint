@@ -11,6 +11,7 @@ import ResetPassword from "./components/pages/ResetPassword/ResetPassword";
 import Yahrzeit from "./components/pages/Yahrzeit/Yahrzeit";
 import ErrorMessage from "./components/templates/ErrorMessage/ErrorMessage";
 import Spinner from "./components/templates/Spinner/Spinner";
+import ManagLocation from "./components/pages/ManagLocation/ManagLocation";
 
 const App = props => {
 
@@ -29,6 +30,7 @@ const App = props => {
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/date-hendler" element={<DateHendler />} />
+        <Route path="/manag-location" element={<ManagLocation />} />
       </Routes>
     </div>
   );

@@ -1,4 +1,7 @@
 .continer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   .button {
     background-color: rgb(0, 162, 255);
     color: white;
@@ -14,6 +17,7 @@
     margin-bottom: 10px;
     cursor: pointer;
     position: relative;
+    margin-bottom: 20px;
     &:hover {
         background-color: rgb(255, 255, 255);
         color: rgb(0, 162, 255);
@@ -23,8 +27,9 @@
         top: 40px;
         right: 0px;
         width: 100%;
-        background-color: rgb(224, 224, 224);
+        background-color: rgba(224, 224, 224, 0.911);
         z-index: 900;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         .list_locations_item {
             color: rgb(0, 162, 255);
             padding: 8px;

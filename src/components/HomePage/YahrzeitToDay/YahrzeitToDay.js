@@ -22,7 +22,7 @@ const YahrzeitToDay = props => {
     return (
         <div className={styles.continer}>
             {todaysYahrzeits.map((item, index) => (
-                <div item={index} className={styles.xxx}>
+                <div item={index} className={styles.neme}>
                     {item.name}
                 </div >
             ))}

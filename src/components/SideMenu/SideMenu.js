@@ -41,6 +41,13 @@ const SideMenu = props => {
                 >
                     דף הבית
                 </NavLink>
+                <NavLink
+                    dir='auto'
+                    to="/manag-location"
+                    className={linkActive}
+                >
+                    ניהול מיקום
+                </NavLink>
                 {userData.isLogin && <NavLink
                     dir='auto'
                     to="/yahrzeit"

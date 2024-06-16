@@ -53,15 +53,15 @@ const ScreenLocaton = props => {
 
     return (
         <div className={styles.continer}>
-            {openMap && <Map setOpenMap={setOpenMap} />}
-            <div onClick={() => setOpenMap(true)} className={styles.button}>
-                <ImLocation />
-                הצג מיקום נוכחי במפה
-            </div >
             <div dir='auto' onClick={() => setopenListLocations(!openListLocations)} className={styles.button}>
                 בחר מיקום: {location.locationName} <IoIosArrowDown />
                 {divListLocations()}
             </div >
+            <Map setOpenMap={setOpenMap} />
+            {/* <div onClick={() => setOpenMap(true)} className={styles.button}>
+                <ImLocation />
+                הצג מיקום נוכחי במפה
+            </div > */}
         </div >
     );
 };

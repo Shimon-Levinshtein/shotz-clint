@@ -18,12 +18,12 @@ const HomePage = props => {
                     <ScreenKosherZmanim />
                 </div >
                 <div className={styles.top_left}>
-                    <ScreenLocaton />
+
                     <ClockAnalog />
+                    <YahrzeitToDay />
                 </div >
             </div >
             <div className={styles.midlle}>
-                <YahrzeitToDay />
             </div >
         </div >
 

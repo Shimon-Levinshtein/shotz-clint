@@ -10,7 +10,7 @@ const ClockAnalog = props => {
     // myDate.setDate(myDate.getDate() + 2);
     let options = {
         // useCustomTime: true,
-        width: "300px",
+        width: "200px",
         border: true,
         borderColor: "#50bfff",
         baseColor: "#99daff",

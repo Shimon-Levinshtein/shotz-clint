@@ -4,10 +4,20 @@ import { connect } from 'react-redux';
 import { GiHamburgerMenu } from "react-icons/gi";
 import SideMenu from '../SideMenu/SideMenu';
 import ButtonClose from '../templates/ButtonClose/ButtonClose';
+import {
+    HebrewDateFormatter,
+} from 'kosher-zmanim';
+import moment from 'moment';
+import Hebcal from "hebcal";
 
 const Header = props => {
 
     const sideMenuRef = useRef(null);
+    const location = props.location;
+
+    const myDate = props.myDate.date;
+    const hebcal = new Hebcal.HDate(myDate);
+    hebcal.setLocation(+location.latitude, +location.longitude);
 
     const heandlerMenu = open => {
         if (sideMenuRef.current) {
@@ -33,6 +43,15 @@ const Header = props => {
             <div onClick={() => heandlerMenu(true)} className={styles.menu}>
                 <GiHamburgerMenu />
             </div>
+            <div className={styles.date_information}>
+                <div className={styles.parasha}>
+                    פרשת {hebcal.getSedra('h')}
+                </div>
+                <div className={styles.date}>
+                    יום {HebrewDateFormatter.hebrewDaysOfWeek[hebcal.getDay()]} {hebcal.toString('h')} ({moment(myDate).format('DD/MM/YYYY ')})
+                </div>
+                {/* <ClockAnalog/> */}
+            </div>
             <div className={styles.besad}>
                 בס"ד
             </div>
@@ -43,6 +62,8 @@ const Header = props => {
 
 const mapStateToProps = state => {
     return {
+        location: state.location,
+        myDate: state.date,
     }
 }
 export default connect(mapStateToProps, {})(Header);
