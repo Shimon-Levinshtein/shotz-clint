@@ -44,7 +44,7 @@ const ScreenKosherZmanim = props => {
     const zmanim = KosherZmanim.getZmanimJson(options);
     const basicZmanim = zmanim.Zmanim;
     return (
-        <div className={styles.continer}>
+        <div className={styles.container}>
             <div className={styles.date_information}>
                 <div className={styles.date_information_text}>
                     יום {HebrewDateFormatter.hebrewDaysOfWeek[hebcal.getDay()]} {hebcal.toString('h')} ({moment(myDate).format('DD/MM/YYYY ')})

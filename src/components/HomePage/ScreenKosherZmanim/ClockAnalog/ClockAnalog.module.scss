@@ -1,4 +1,212 @@
-.continer {
-    // background-color: #99daff;
-    // background-color: rgb(153, 218, 255);
+.container {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 8px solid #d4af37;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.5),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  margin: 0 auto;
+  
+  // Royal clock face pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+      rgba(255, 255, 255, 0.1) 0%, 
+      rgba(255, 255, 255, 0.05) 50%, 
+      transparent 100%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+  }
+  
+  // Clock center dot
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    z-index: 10;
+  }
+  
+  .clockFace {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    
+    // Hour markers
+    .hourMarker {
+      position: absolute;
+      width: 4px;
+      height: 20px;
+      background: #d4af37;
+      border-radius: 2px;
+      transform-origin: bottom center;
+      box-shadow: 0 0 5px rgba(212, 175, 55, 0.6);
+      
+      &:nth-child(1) { transform: rotate(0deg) translateY(-80px); }
+      &:nth-child(2) { transform: rotate(30deg) translateY(-80px); }
+      &:nth-child(3) { transform: rotate(60deg) translateY(-80px); }
+      &:nth-child(4) { transform: rotate(90deg) translateY(-80px); }
+      &:nth-child(5) { transform: rotate(120deg) translateY(-80px); }
+      &:nth-child(6) { transform: rotate(150deg) translateY(-80px); }
+      &:nth-child(7) { transform: rotate(180deg) translateY(-80px); }
+      &:nth-child(8) { transform: rotate(210deg) translateY(-80px); }
+      &:nth-child(9) { transform: rotate(240deg) translateY(-80px); }
+      &:nth-child(10) { transform: rotate(270deg) translateY(-80px); }
+      &:nth-child(11) { transform: rotate(300deg) translateY(-80px); }
+      &:nth-child(12) { transform: rotate(330deg) translateY(-80px); }
+    }
+    
+    // Hour numbers
+    .hourNumber {
+      position: absolute;
+      color: #d4af37;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.8);
+      transform: translate(-50%, -50%);
+      
+      &:nth-child(13) { top: 15%; left: 50%; } // 12
+      &:nth-child(14) { top: 25%; left: 85%; } // 1
+      &:nth-child(15) { top: 50%; left: 95%; } // 3
+      &:nth-child(16) { top: 75%; left: 85%; } // 5
+      &:nth-child(17) { top: 85%; left: 50%; } // 6
+      &:nth-child(18) { top: 75%; left: 15%; } // 7
+      &:nth-child(19) { top: 50%; left: 5%; } // 9
+      &:nth-child(20) { top: 25%; left: 15%; } // 11
+    }
+    
+    // Clock hands
+    .hourHand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 50px;
+      background: linear-gradient(to top, #d4af37, #ffd700);
+      border-radius: 3px;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(0deg);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+      z-index: 5;
+    }
+    
+    .minuteHand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 70px;
+      background: linear-gradient(to top, #d4af37, #ffd700);
+      border-radius: 2px;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(0deg);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+      z-index: 4;
+    }
+    
+    .secondHand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+      border-radius: 1px;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(0deg);
+      box-shadow: 0 0 5px rgba(255, 107, 107, 0.8);
+      z-index: 3;
+    }
+  }
+  
+  // Royal decorative elements
+  .royalDecoration {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    z-index: 15;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 150px;
+    height: 150px;
+    border-width: 6px;
+    
+    &::before {
+      width: 135px;
+      height: 135px;
+    }
+    
+    &::after {
+      width: 10px;
+      height: 10px;
+    }
+    
+    .clockFace {
+      .hourMarker {
+        width: 3px;
+        height: 15px;
+        
+        &:nth-child(1) { transform: rotate(0deg) translateY(-60px); }
+        &:nth-child(2) { transform: rotate(30deg) translateY(-60px); }
+        &:nth-child(3) { transform: rotate(60deg) translateY(-60px); }
+        &:nth-child(4) { transform: rotate(90deg) translateY(-60px); }
+        &:nth-child(5) { transform: rotate(120deg) translateY(-60px); }
+        &:nth-child(6) { transform: rotate(150deg) translateY(-60px); }
+        &:nth-child(7) { transform: rotate(180deg) translateY(-60px); }
+        &:nth-child(8) { transform: rotate(210deg) translateY(-60px); }
+        &:nth-child(9) { transform: rotate(240deg) translateY(-60px); }
+        &:nth-child(10) { transform: rotate(270deg) translateY(-60px); }
+        &:nth-child(11) { transform: rotate(300deg) translateY(-60px); }
+        &:nth-child(12) { transform: rotate(330deg) translateY(-60px); }
+      }
+      
+      .hourNumber {
+        font-size: 1rem;
+      }
+      
+      .hourHand {
+        width: 5px;
+        height: 40px;
+      }
+      
+      .minuteHand {
+        width: 3px;
+        height: 55px;
+      }
+      
+      .secondHand {
+        width: 2px;
+        height: 60px;
+      }
+    }
+    
+    .royalDecoration {
+      font-size: 1.5rem;
+      top: -12px;
+    }
+  }
 }

@@ -13,6 +13,12 @@ const HomePage = props => {
 
     return (
         <div className={styles.continer}>
+            <div className={styles.royalHeader}>
+                <div className={styles.crownDecoration}>👑</div>
+                <h1 className={styles.mainTitle}>פרשת כי תבוא</h1>
+                <div className={styles.dateDisplay}>יום ראשון י"ד אלול התשפ"ה (07/09/2025)</div>
+                <div className={styles.crownDecoration}>👑</div>
+            </div>
             <div className={styles.top}>
                 <div className={styles.top_right}>
                     <ScreenKosherZmanim />

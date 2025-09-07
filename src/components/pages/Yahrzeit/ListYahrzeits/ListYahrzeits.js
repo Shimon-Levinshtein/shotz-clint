@@ -12,6 +12,7 @@ const ListYahrzeits = props => {
     const listYahrzeits = props.listYahrzeits;
 
     const [idYahrzeit] = useState(location.state?.idYahrzeit ? location.state.idYahrzeit : null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         if (!listYahrzeits) {
@@ -44,16 +45,31 @@ const ListYahrzeits = props => {
         });
     };
 
+    // Filter yahrzeits based on search term
+    const filteredYahrzeits = listYahrzeits ? listYahrzeits.filter(item => 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.hebDateFomat.toLowerCase().includes(searchTerm.toLowerCase())
+    ) : [];
 
     if (!listYahrzeits) return <h4 dir='auto'>טוען רשימה...</h4>;
 
     return (
         <div className={styles.continer}>
             <div className={styles.title}>
-                רשימת יארצייטים ({Object.keys(listYahrzeits).length})
+                רשימת יארצייטים ({filteredYahrzeits.length})
             </div >
+            <div className={styles.search_container}>
+                <input
+                    type="text"
+                    placeholder="חיפוש לפי שם או תאריך..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className={styles.search_input}
+                    dir="rtl"
+                />
+            </div>
             <div className={styles.list_box}>
-                {listYahrzeits.map((item, index) => (
+                {filteredYahrzeits.map((item, index) => (
                     <div
                         key={index}
                         className={styles.list_item_box}

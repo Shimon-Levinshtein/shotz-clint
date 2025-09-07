@@ -15,6 +15,32 @@
     margin-bottom: 10px;
   }
 
+  .search_container {
+    margin-bottom: 15px;
+    width: 100%;
+    
+    .search_input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.068) 1.95px 1.95px 2.6px;
+      
+      &:focus {
+        outline: none;
+        border-color: #8cd5ff;
+        box-shadow: 0 0 5px rgba(140, 213, 255, 0.3);
+      }
+      
+      &::placeholder {
+        color: #999;
+        text-align: right;
+      }
+    }
+  }
+
   .list_box {
     height: calc(100vh - 200px);
     overflow-y: auto;

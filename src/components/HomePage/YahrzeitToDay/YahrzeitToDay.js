@@ -20,13 +20,20 @@ const YahrzeitToDay = props => {
     if (!todaysYahrzeits) return null;
 
     return (
-        <div className={styles.continer}>
-            {todaysYahrzeits.map((item, index) => (
-                <div item={index} className={styles.neme}>
-                    {item.name}
-                </div >
-            ))}
-        </div >
+        <div className={styles.container}>
+            <div className={styles.memorialHeader}>
+                <span className={styles.candleLeft}>🕯️</span>
+                <span className={styles.headerText}>יארצייטים היום</span>
+                <span className={styles.candleRight}>🕯️</span>
+            </div>
+            <div className={styles.memorialList}>
+                {todaysYahrzeits.map((item, index) => (
+                    <div key={index} className={styles.memorialItem}>
+                        {item.name}
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 };
 
